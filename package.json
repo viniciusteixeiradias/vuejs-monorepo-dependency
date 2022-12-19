@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pos:dev": "npm run dev -w=./apps/pos",
+    "order:dev": "npm run dev -w=./apps/ordering-pad",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
