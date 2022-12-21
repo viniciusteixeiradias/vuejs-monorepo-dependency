@@ -1,10 +1,5 @@
-<script setup lang="ts">
-import TodayOrder from '@fjord/core/src/components/TodayOrder.vue'
-</script>
-
 <template>
-  <h1>Im Ordering pad</h1>
-  <TodayOrder />
+  <router-view />
 </template>
 
 <style>
@@ -14,6 +9,7 @@ import TodayOrder from '@fjord/core/src/components/TodayOrder.vue'
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  padding-top: 60px;
+  height: 100vh;
 }
 </style>
