@@ -4,24 +4,16 @@ import { Order } from "@fjord/core/src/models/order";
 import { AxiosInstance } from "axios";
 const ENDPOINT = "/orders";
 
-class OrderService {
-  http: AxiosInstance;
+export default (http: AxiosInstance) => ({
+  get: (uuid: string): Promise<Order> => {
+    return http.get(ENDPOINT + `${uuid}`);
+  },
 
-  constructor(http: AxiosInstance) {
-    this.http = http;
-  }
+  getAll: (filter: URLSearchParams): Promise<Order[]> => {
+    return http.get(ENDPOINT, { params: filter });
+  },
 
-  public get(uuid: string): Promise<Order> {
-    return this.http.get(ENDPOINT + `${uuid}`);
-  }
-
-  public getAll(filter: URLSearchParams): Promise<Order[]> {
-    return this.http.get(ENDPOINT, { params: filter });
-  }
-
-  public getCount(filter: URLSearchParams): Promise<number> {
-    return this.http.get(`${ENDPOINT}/count`, { params: filter });
-  }
-}
-
-export default OrderService;
+  getCount: (filter: URLSearchParams): Promise<number> => {
+    return http.get(`${ENDPOINT}/count`, { params: filter });
+  },
+});

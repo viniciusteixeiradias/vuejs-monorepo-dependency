@@ -51,7 +51,7 @@ const mountFilters = (filters: Filters): URLSearchParams => {
   return params;
 };
 
-const orderService = new OrderService(http);
+const orderService = OrderService(http);
 
 export const useOrderStore = defineStore("order", {
   state: () =>
