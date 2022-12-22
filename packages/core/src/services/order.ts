@@ -6,7 +6,7 @@ const ENDPOINT = "/orders";
 
 export default (http: AxiosInstance) => ({
   get: (uuid: string): Promise<Order> => {
-    return http.get(ENDPOINT + `${uuid}`);
+    return http.get(`${ENDPOINT}/${uuid}`);
   },
 
   getAll: (filter: URLSearchParams): Promise<Order[]> => {

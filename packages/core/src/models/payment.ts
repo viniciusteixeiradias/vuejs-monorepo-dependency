@@ -1,9 +1,9 @@
 enum PaymentMethod {
-  CARD = 'Card',
-  CASH = 'Cash'
+  CARD = "Card",
+  CASH = "Cash",
 }
 
-type PaymentMethodType = 'Cash' | 'Card';
+type PaymentMethodType = "Cash" | "Card";
 
 interface Payment {
   status?: string;
@@ -22,3 +22,6 @@ interface Payment {
   customer?: string;
   value?: number;
 }
+
+export { Payment, PaymentMethod };
+export type { PaymentMethodType };

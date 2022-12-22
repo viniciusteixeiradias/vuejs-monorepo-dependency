@@ -14,5 +14,6 @@
     "apps/*"
   ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {}
 }

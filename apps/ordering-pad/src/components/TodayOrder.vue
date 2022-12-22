@@ -5,6 +5,9 @@ import { useOrderStore } from '@/stores/order'
 import { TableColumn } from '@fjord/core/src/types/vendor/q-table';
 import { formatDate } from '@fjord/core/src/utils';
 import { useRouter } from 'vue-router';
+import { usePreferenceStore } from '@/stores/preference';
+import { storeToRefs } from 'pinia';
+
 import AppFilterOrderType from '@/components/AppFilterOrderType.vue';
 
 interface State {
@@ -27,11 +30,11 @@ const state = reactive<State>({
   },
 });
 
+
 const orderStore = useOrderStore();
 const router = useRouter();
 
-// const { moneySymbol } = useGetters<PreferenceGetters>('preference');
-const moneySymbol = '$'
+const { moneySymbol } = storeToRefs(usePreferenceStore());
 
 const columns: TableColumn[] = [
   {
@@ -80,7 +83,7 @@ const columns: TableColumn[] = [
     field: 'totalPrice',
     align: 'center',
     sortable: true,
-    format: (val) => `${moneySymbol} ${val.toFixed(2)}`,
+    format: (val) => `${moneySymbol.value} ${val.toFixed(2)}`,
     style: 'font-size: 1.5rem; width: 115px;',
   },
   {
@@ -290,13 +293,13 @@ loadData();
     min-width: 8rem;
     font-weight: bold;
     font-size: 1.2rem;
-    box-shadow: 0 2px 4px 0 gray, 0 0 6px 0 white;
+    box-shadow: 0 2px 4px 0 $light-gray-1, 0 0 6px 0 $white;
   }
 }
 
 .order-list {
   &__summary {
-    color: black;
+    color: $black;
     margin: 0.5rem 0;
     font-size: 1.5rem;
   }

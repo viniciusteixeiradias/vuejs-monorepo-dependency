@@ -1,6 +1,7 @@
 import { Product } from "./product";
 import { AddonGroup } from "./addon";
 import { Address } from "./address";
+import { Payment } from "./payment";
 
 enum OrderType {
   COLLECTION = "Collection",

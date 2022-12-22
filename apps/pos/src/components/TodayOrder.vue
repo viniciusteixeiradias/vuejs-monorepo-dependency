@@ -6,6 +6,8 @@ import { TableColumn } from '@fjord/core/src/types/vendor/q-table';
 import { formatDate } from '@fjord/core/src/utils';
 import { useRouter } from 'vue-router';
 import AppFilterOrderType from '@/components/AppFilterOrderType.vue';
+import { usePreferenceStore } from '@/stores/preference';
+import { useCartStore } from '@/stores/cart';
 
 interface State {
   loading: boolean;
@@ -30,8 +32,8 @@ const state = reactive<State>({
 const orderStore = useOrderStore();
 const router = useRouter();
 
-// const { moneySymbol } = useGetters<PreferenceGetters>('preference');
-const moneySymbol = '$'
+const preference = usePreferenceStore();
+const { loadCartFromOrder } = useCartStore();
 
 const columns: TableColumn[] = [
   {
@@ -80,7 +82,7 @@ const columns: TableColumn[] = [
     field: 'totalPrice',
     align: 'center',
     sortable: true,
-    format: (val) => `${moneySymbol} ${val.toFixed(2)}`,
+    format: (val) => `${preference.moneySymbol.value} ${val.toFixed(2)}`,
     style: 'font-size: 1.5rem; width: 115px;',
   },
   {
@@ -92,15 +94,13 @@ const columns: TableColumn[] = [
   },
 ];
 
-// const { loadCartFromOrder } = useMethods<CartMethods>('cart');
-
 const goBack = () => router.back();
 
 const viewOrder = async (order: Order) => {
   if (!order.uuid) return;
   const data = await orderStore.getOrder(order.uuid);
   orderStore.setOrder(data);
-  // loadCartFromOrder(data);
+  loadCartFromOrder(data);
 };
 
 const loadMore = async () => {
@@ -296,13 +296,13 @@ loadData();
     min-width: 8rem;
     font-weight: bold;
     font-size: 1.2rem;
-    box-shadow: 0 2px 4px 0 gray, 0 0 6px 0 white;
+    box-shadow: 0 2px 4px 0 $light-gray-1, 0 0 6px 0 $white;
   }
 }
 
 .order-list {
   &__summary {
-    color: black;
+    color: $black;
     margin: 0.5rem 0;
     font-size: 1.5rem;
   }
