@@ -1,6 +1,7 @@
 <template>
-  <h1>Im home</h1>
+  <h1>Welcome!</h1>
   <li>
-    <router-link style="font-size: 3rem" :to="{ name: 'today' }">Today Order</router-link>
+    <router-link style="font-size: 2rem; padding: 2rem" :to="{ name: 'today' }">Today Order</router-link>
+    <router-link style="font-size: 2rem; padding: 2rem" :to="{ name: 'drivers' }">Drivers</router-link>
   </li>
 </template>

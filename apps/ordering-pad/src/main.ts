@@ -3,7 +3,8 @@ import { createPinia } from "pinia";
 import { Quasar } from "quasar";
 import App from "./App.vue";
 import router from "@/routes";
-import "./samples/node-api";
+
+import { vSoundClick } from "@/directives";
 
 import quasarUserOptions from "@fjord/core/src/quasar-user-options";
 
@@ -13,6 +14,5 @@ const pinia = createPinia();
 app.use(pinia);
 app.use(Quasar, quasarUserOptions);
 app.use(router);
-app.mount("#app").$nextTick(() => {
-  postMessage({ payload: "removeLoading" }, "*");
-});
+app.directive("soundClick", vSoundClick);
+app.mount("#app");

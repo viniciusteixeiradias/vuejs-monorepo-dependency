@@ -2,6 +2,7 @@ import { URLSearchParams } from "url";
 
 import { Order } from "@fjord/core/src/models/order";
 import { AxiosInstance } from "axios";
+
 const ENDPOINT = "/orders";
 
 export default (http: AxiosInstance) => ({

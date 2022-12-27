@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { onBeforeMount } from 'vue';
 import { usePreferenceStore } from '@/stores/preference';
 import { OrderTypeFilter } from '@fjord/core/src/models/order';
 import { storeToRefs } from 'pinia';
@@ -22,16 +21,11 @@ const actionButtons: OrderTypeFilter[] = [
   OrderTypeFilter.COLLECTION
 ];
 
-const store = usePreferenceStore();
-const { useTakeaway, useTables } = storeToRefs(store);
+const { useTakeaway, useTables } = storeToRefs(usePreferenceStore());
 
 if (useTables.value && !props.hideTable) {
   actionButtons.push(OrderTypeFilter.TABLE);
 }
-
-onBeforeMount(async () => {
-  await store.load();
-})
 </script>
 
 <template>

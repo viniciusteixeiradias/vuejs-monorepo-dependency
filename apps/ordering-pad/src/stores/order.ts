@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { Order, OrderTypeFilter } from "@fjord/core/src/models/order";
 import OrderService from "@fjord/core/src/services/order";
 import moment from "moment";
-import http from "../services";
+import http from "@/services";
 
 interface State {
   onlineOrders: Order[];

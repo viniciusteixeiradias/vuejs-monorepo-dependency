@@ -1,3 +1,10 @@
+<script lang="ts" setup>
+import { usePreferenceStore } from '@/stores/preference';
+
+const { load } = usePreferenceStore();
+load();
+</script>
+
 <template>
   <router-view />
 </template>

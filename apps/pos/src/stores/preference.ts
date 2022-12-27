@@ -38,9 +38,8 @@ export const usePreferenceStore = defineStore("preference", {
       return computed(() => state.preferences?.general?.useTakeaway);
     },
 
-    moneySymbol(state): ComputedRef<string> {
-      const symbol = state.preferences?.general?.currency?.symbol || "€";
-      return computed(() => symbol);
+    moneySymbol(state): string {
+      return state.preferences?.general?.currency?.symbol || "€";
     },
   },
 });

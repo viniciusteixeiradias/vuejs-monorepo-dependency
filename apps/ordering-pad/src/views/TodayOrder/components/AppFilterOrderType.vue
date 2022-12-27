@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+import { usePreferenceStore } from '@/stores/preference';
 import { OrderTypeFilter } from '@fjord/core/src/models/order';
-import { computed } from 'vue';
+import { storeToRefs } from 'pinia';
 
 const props = defineProps<{
   modelValue: OrderTypeFilter;
@@ -11,17 +12,7 @@ const emits = defineEmits<{
   (e: 'update:modelValue', value: OrderTypeFilter): void;
 }>();
 
-// const { useTables, useTakeaway } = useGetters<PreferenceGetters>('preference');
-const useTables = true, useTakeaway = true;
-
-const orderType = computed({
-  get() {
-    return props.modelValue;
-  },
-  set(value) {
-    emits('update:modelValue', value);
-  }
-});
+const emit = (value: OrderTypeFilter) => emits('update:modelValue', value);
 
 const actionButtons: OrderTypeFilter[] = [
   OrderTypeFilter.ALL,
@@ -30,20 +21,21 @@ const actionButtons: OrderTypeFilter[] = [
   OrderTypeFilter.COLLECTION
 ];
 
-if (useTables && !props.hideTable) {
-  actionButtons.push(
-    OrderTypeFilter.TABLE
-  );
+const { useTakeaway, useTables } = storeToRefs(usePreferenceStore());
+
+if (useTables.value && !props.hideTable) {
+  actionButtons.push(OrderTypeFilter.TABLE);
 }
 </script>
 
 <template>
   <q-btn-group v-if="useTakeaway">
     <q-btn
+      v-sound-click
       v-for="button in actionButtons"
       :key="button"
-      :color="orderType === button ? 'positive' : 'primary'"
-      @click="orderType = button"
+      :color="props.modelValue === button ? 'positive' : 'primary'"
+      @click="emit(button)"
     >
       {{ button }}
     </q-btn>

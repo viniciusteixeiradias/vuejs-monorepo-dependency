@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import { OrderTypeFilter, Order } from '@fjord/core/src/models/order';
-import { reactive } from 'vue';
+import { reactive, watch } from 'vue';
 import { useOrderStore } from '@/stores/order'
 import { TableColumn } from '@fjord/core/src/types/vendor/q-table';
-import { formatDate } from '@fjord/core/src/utils';
+import { DateUtils, OrdersUtils } from '@fjord/core/src/utils';
 import { useRouter } from 'vue-router';
-import AppFilterOrderType from '@/components/AppFilterOrderType.vue';
+import AppFilterOrderType from './components/AppFilterOrderType.vue';
 import { usePreferenceStore } from '@/stores/preference';
 import { useCartStore } from '@/stores/cart';
 
@@ -30,9 +30,10 @@ const state = reactive<State>({
 });
 
 const orderStore = useOrderStore();
-const router = useRouter();
+const { back } = useRouter();
 
-const preference = usePreferenceStore();
+const { moneySymbol } = usePreferenceStore();
+
 const { loadCartFromOrder } = useCartStore();
 
 const columns: TableColumn[] = [
@@ -50,6 +51,7 @@ const columns: TableColumn[] = [
     field: 'date',
     align: 'center',
     sortable: true,
+    format: (val) => DateUtils.formatDateHoursMinutesPostOrAnteMeridiem(val),
     style: 'width: 105px;'
   },
   {
@@ -82,7 +84,7 @@ const columns: TableColumn[] = [
     field: 'totalPrice',
     align: 'center',
     sortable: true,
-    format: (val) => `${preference.moneySymbol.value} ${val.toFixed(2)}`,
+    format: (val) => `${moneySymbol} ${val.toFixed(2)}`,
     style: 'font-size: 1.5rem; width: 115px;',
   },
   {
@@ -94,8 +96,6 @@ const columns: TableColumn[] = [
   },
 ];
 
-const goBack = () => router.back();
-
 const viewOrder = async (order: Order) => {
   if (!order.uuid) return;
   const data = await orderStore.getOrder(order.uuid);
@@ -104,44 +104,38 @@ const viewOrder = async (order: Order) => {
 };
 
 const loadMore = async () => {
+  state.pagination.page = state.pagination.page + 1;
+  const data = await getTodayOrders();
+  state.orders = state.orders.concat(data);
+  OrdersUtils.decreasingSortOrdersDate(state.orders);
+};
+
+const loadTodayOrders = async () => {
+  state.orders = await getTodayOrders();
+  OrdersUtils.decreasingSortOrdersDate(state.orders);
+};
+
+const getTodayOrders = async (): Promise<Order[]> => {
   try {
     state.loading = true;
-    state.pagination.page = state.pagination.page + 1;
 
     const data = await orderStore.getTodayOrders(
       state.orderTypeFilter,
       state.pagination.page,
       state.pagination.limit
-    );
+    ); 
 
-    state.orders = state.orders.concat(data);
-    state.orders.sort((a, b) => a && a.dailyId && b && b.dailyId ? b.dailyId - a.dailyId : 0);
+    return data;
   } finally {
     state.loading = false;
   }
-};
+}
 
-const updateOrderTypeFilter = (orderTypeFilter: OrderTypeFilter) => {
-  state.orderTypeFilter = orderTypeFilter;
-  loadData();
-};
+loadTodayOrders();
 
-const loadData = async () => {
-  try {
-    state.loading = true;
-    const data = await orderStore.getTodayOrders(
-      state.orderTypeFilter,
-      state.pagination.page,
-      state.pagination.limit
-    );
-    state.orders = data;
-    state.orders.sort((a, b) => a && a.dailyId && b && b.dailyId ? b.dailyId - a.dailyId : 0);
-  } finally {
-    state.loading = false;
-  }
-};
-
-loadData();
+watch(() => state.orderTypeFilter, () => {
+  loadTodayOrders();
+})
 </script>
 
 <template>
@@ -149,14 +143,13 @@ loadData();
     <q-card-section class="card__header">
       <div>
         <q-btn
-
           v-sound-click
           class="card__button"
           size="small"
           color="primary"
           icon="arrow_left"
           label="Back"
-          @click="goBack"
+          @click="back"
         />
         <div class="order-list__summary">
           All Sales:
@@ -170,8 +163,7 @@ loadData();
       </div>
       <div>
         <AppFilterOrderType
-          :model-value="state.orderTypeFilter"
-          @update:model-value="updateOrderTypeFilter"
+          v-model="state.orderTypeFilter"
         />
       </div>
     </q-card-section>
@@ -187,12 +179,6 @@ loadData();
         :rows-per-page-options="[0]"
         wrap-cells
       >
-        <template #body-cell-date="scope">
-          <q-td :style="scope.col.style">
-            <q-icon name="schedule" />
-            {{ formatDate(scope.value) }}
-          </q-td>
-        </template>
         <template #body-cell-address="scope">
           <q-td :style="scope.col.style">
             <template v-if="scope.row.address">
@@ -200,12 +186,8 @@ loadData();
                 v-if="scope.row.address.fullName || scope.row.address.phone"
                 class="client-name"
               >
-                {{
-                    scope.row.address.fullName
-                      ? `${scope.row.address.fullName}: `
-                      : ''
-                }}
-                {{ `${scope.row.address.phone}` }}
+                {{ scope.row.address.fullName || '' }}
+                {{ scope.row.address.phone }}
               </span>
               <div class="address">
                 {{ scope.row.address.addressLine1 }}
@@ -251,9 +233,8 @@ loadData();
               v-sound-click
               color="blue"
               @click="viewOrder(scope.row)"
-            >
-              View
-            </q-btn>
+              label="View"
+            />
           </q-td>
         </template>
       </q-table>
@@ -264,10 +245,9 @@ loadData();
         color="negative"
         :disabled="orderStore.orderCount <= state.orders.length"
         :loading="state.loading"
+        label="SHOW MORE"
         @click="loadMore"
-      >
-        SHOW MORE
-      </q-btn>
+      />
     </div>
   </q-card>
 </template>
