@@ -1,4 +1,7 @@
 @charset 'utf-8';
 
+//Base Styles
+@forward "base/__base-dir";
+
 //Abstracts
 @forward "abstracts/__abstracts-dir";

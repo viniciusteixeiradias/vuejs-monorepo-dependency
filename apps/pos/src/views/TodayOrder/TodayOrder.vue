@@ -8,7 +8,6 @@ import { useRouter } from 'vue-router';
 import AppFilterOrderType from './components/AppFilterOrderType.vue';
 import { usePreferenceStore } from '@/stores/preference';
 import { useCartStore } from '@/stores/cart';
-import { ADDRCONFIG } from 'dns';
 
 interface State {
   loading: boolean;
@@ -70,6 +69,7 @@ const columns: TableColumn[] = [
     field: 'address',
     align: 'center',
     sortable: true,
+    style: 'text-align: start;'
   },
   {
     name: 'method',
@@ -258,8 +258,7 @@ watch(() => state.orderTypeFilter, () => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #343434 !important;
-  color: white;
+  margin-inline: 1rem;
 
   &__main-section {
     flex: 1;

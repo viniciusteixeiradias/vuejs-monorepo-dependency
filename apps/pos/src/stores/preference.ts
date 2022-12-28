@@ -1,16 +1,18 @@
-import { defineStore } from "pinia";
-import { Preference } from "@fjord/core/src/models/preference";
-import PreferenceService from "@fjord/core/src/services/preference";
-import http from "@/services";
-import { computed, ComputedRef } from "vue";
+import { defineStore } from 'pinia';
+import { Preference } from '@fjord/core/src/models/preference';
+import PreferenceService from '@fjord/core/src/services/preference';
+import http from '@/services';
+import { computed, ComputedRef } from 'vue';
 
 interface State {
   preferences?: Preference;
 }
 
-export const usePreferenceStore = defineStore("preference", {
+export const usePreferenceStore = defineStore('preference', {
   state(): State {
-    return {};
+    return {
+      preferences: undefined,
+    };
   },
 
   actions: {
@@ -39,7 +41,7 @@ export const usePreferenceStore = defineStore("preference", {
     },
 
     moneySymbol(state): string {
-      return state.preferences?.general?.currency?.symbol || "€";
+      return state.preferences?.general?.currency?.symbol || '€';
     },
   },
 });

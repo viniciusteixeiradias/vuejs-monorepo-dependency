@@ -1,14 +1,24 @@
-import { Product } from "./product";
-import { AddonGroup } from "./addon";
-import { Address } from "./address";
-import { Payment } from "./payment";
+import { Product } from './product';
+import { AddonGroup } from './addon';
+import { Address } from './address';
+import { Payment } from './payment';
+
+enum OrderStatus {
+  PENDING = 'Pending',
+  COMPLETED = 'Completed',
+  CANCELED = 'Canceled',
+  REJECTED = 'Rejected',
+  DELETED = 'Deleted',
+  ON_HOLD = 'On Hold',
+  PROCESSING = 'Processing',
+}
 
 enum OrderType {
-  COLLECTION = "Collection",
-  DELIVERY = "Delivery",
-  TABLE = "Table",
-  WALK_IN = "Walk In",
-  SALE = "Sale",
+  COLLECTION = 'Collection',
+  DELIVERY = 'Delivery',
+  TABLE = 'Table',
+  WALK_IN = 'Walk In',
+  SALE = 'Sale',
 }
 
 interface OrderItem {
@@ -52,13 +62,13 @@ interface Order {
 }
 
 enum OrderTypeFilter {
-  ALL = "All",
-  COLLECTION = "Collection",
-  DELIVERY = "Delivery",
-  TABLE = "Table",
-  WALK_IN = "Walk In",
-  SALE = "Sale",
+  ALL = 'All',
+  COLLECTION = 'Collection',
+  DELIVERY = 'Delivery',
+  TABLE = 'Table',
+  WALK_IN = 'Walk In',
+  SALE = 'Sale',
 }
 
-export { OrderType, OrderTypeFilter };
+export { OrderType, OrderTypeFilter, OrderStatus };
 export type { OrderItem, Order };

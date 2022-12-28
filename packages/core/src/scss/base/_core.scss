@@ -1,0 +1,7 @@
+@use '../abstracts/variables';
+
+:root {
+  --cash-color: #{variables.$dark-green};
+  --card-color: #{variables.$skyblue};
+  --pending-color: #{variables.$orange};
+}
