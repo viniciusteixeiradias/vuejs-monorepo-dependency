@@ -3,6 +3,10 @@ import { contextBridge, ipcRenderer } from 'electron';
 const api = {
   printHtml: (html: string): Promise<boolean> =>
     ipcRenderer.invoke('printHtml', html),
+  saveSettings: (settings: string) =>
+    ipcRenderer.invoke('saveSettings', settings),
+  getPrinters: () => ipcRenderer.invoke('getPrinters'),
+  getSettings: () => ipcRenderer.invoke('getSettings'),
 };
 
 if (process.contextIsolated) {

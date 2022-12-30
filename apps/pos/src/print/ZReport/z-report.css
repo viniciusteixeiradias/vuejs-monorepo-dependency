@@ -3,82 +3,49 @@ body{
     "Roboto",
     "Helvetica Neue", Arial, sans-serif;
 }
-.print-order {
-  max-width: 330px;
-}
+
 .text-center {
   text-align: center;
 }
+
 .footer {
   margin-top: 20px;
 }
-.title {
-  font-size: var(--company-name-print-size);
-  font-weight: bold;
-}
+
 h1, h2, h3, p {
   margin-top: 0.1em;
   margin-bottom: 0.1em;
 }
+
 hr {
   border-top: 1px solid;
   margin-top: 1px;
   margin-bottom: 1px;
 }
+
 hr.dotted {
   border-top: 1px dashed;
 }
+
 table {
   width: 100%;
-  font-weight: bold;
+  font-size: 1.2rem;
 }
+
 table td, table td * {
   vertical-align: top;
 }
-.address {
-  font-size: 1.4em;
-}
-.address__header {
-  display: flex;
-  justify-content: space-between
-}
-.address__icon {
-  width: 6rem;
-}
+
 .print__subtotal {
-  font-size: 1.1em;
+  font-size: 1.2rem;
   font-weight: bold;
 }
+
 .print__total {
-  font-size: 1.4em;
+  font-size: 1.6rem;
   font-weight: bold;
 }
-.print__description {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  flex-wrap: nowrap;
-}
-.print__option-name {
-  font-weight: bold;
-  font-size: 0.8em;
-  padding-left: 1em;
-}
-.print__addon {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  flex-wrap: nowrap;
-  padding-left: 1em;
-  font-size: 1em;
-  font-weight: normal;
-}
-.payment-text {
-  font-size: 1.4rem;
-  font-weight: bold;
-  text-align: center;
-}
-.payment-info {
-  font-size: 0.7rem;
-}
+
 @page {
   /* prevents electron's additional margins around sheet-content (the first printedPage of: the html already sized 8.5x22) */
   margin-top: 0cm;

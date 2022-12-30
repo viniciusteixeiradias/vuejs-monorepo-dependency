@@ -73,6 +73,7 @@ const openTill = () => {
 const callPrint = async () => {
   try {
     await printPage();
+    // TODO: Check this with Levi or Daniel
     // for (const printIndex in printGroupNames) {
     //   setTimeout(() => {
     //     router.push({

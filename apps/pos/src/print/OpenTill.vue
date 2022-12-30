@@ -1,3 +1,3 @@
 <template>
-  <h1>Open Till</h1>
+  <div>Open Till</div>
 </template>
