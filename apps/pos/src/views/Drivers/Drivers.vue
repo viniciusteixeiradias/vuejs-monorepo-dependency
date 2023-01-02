@@ -1,15 +1,15 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue';
-import { Order } from '@fjord/core/src/models/order';
+import { Order } from '@fjord/core/models/order';
 import { useRouter } from 'vue-router';
 
 import AppHeaderTable from './components/AppHeaderTable.vue';
 import { usePreferenceStore } from '@/stores/preference';
 import { useOrderStore } from '@/stores/order';
 import { useCartStore } from '@/stores/cart';
-import { TableColumn } from '@fjord/core/src/types/vendor/q-table';
-import { DateUtils, OrdersUtils } from '@fjord/core/src/utils';
+import { TableColumn } from '@fjord/core/types/vendor/q-table';
+import { DateUtils, OrdersUtils } from '@fjord/core/utils';
 
 interface State {
   loading: boolean;

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { usePreferenceStore } from '@/stores/preference';
-import { OrderTypeFilter } from '@fjord/core/src/models/order';
+import { OrderTypeFilter } from '@fjord/core/models/order';
 import { storeToRefs } from 'pinia';
 
 const props = defineProps<{

@@ -1,7 +1,7 @@
-import { Preference } from "@fjord/core/src/models/preference";
-import { AxiosInstance } from "axios";
+import { Preference } from '@fjord/core/models/preference';
+import { AxiosInstance } from 'axios';
 
-const ENDPOINT = "/preferences";
+const ENDPOINT = '/preferences';
 
 export default (http: AxiosInstance) => ({
   create(preference: Preference): Promise<Preference> {

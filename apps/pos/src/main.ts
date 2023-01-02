@@ -1,12 +1,12 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
-import { Quasar } from "quasar";
-import App from "./App.vue";
-import router from "@/routes";
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+import { Quasar } from 'quasar';
+import App from './App.vue';
+import router from '@/routes';
 
-import { vSoundClick } from "@/directives";
+import { vSoundClick } from '@/directives';
 
-import quasarUserOptions from "@fjord/core/src/quasar-user-options";
+import quasarUserOptions from '@fjord/core/quasar-user-options';
 
 const app = createApp(App);
 const pinia = createPinia();
@@ -14,5 +14,5 @@ const pinia = createPinia();
 app.use(pinia);
 app.use(Quasar, quasarUserOptions);
 app.use(router);
-app.directive("soundClick", vSoundClick);
-app.mount("#app");
+app.directive('soundClick', vSoundClick);
+app.mount('#app');

@@ -5,8 +5,8 @@ import {
   ref,
   onBeforeMount
 } from 'vue';
-import { Printer, Settings } from '@fjord/core/src/models/settings';
-import { Preference } from '@fjord/core/src/models/preference';
+import { Printer, Settings } from '@fjord/core/models/settings';
+import { Preference } from '@fjord/core/models/preference';
 import { PrinterInfo } from 'electron';
 
 // import { ElMessage } from 'element-plus';
@@ -14,9 +14,9 @@ import { useRouter } from 'vue-router';
 import { useSettingsStore } from '@/stores/settings';
 import { storeToRefs } from 'pinia';
 import { usePreferenceStore } from '@/stores/preference';
-import { SettingsFile } from '@fjord/core/src/models/settings';
+import { SettingsFile } from '@fjord/core/models/settings';
 import InputNumber from '@/components/InputNumber.vue';
-import { TableColumn } from '@fjord/core/src/types/vendor/q-table';
+import { TableColumn } from '@fjord/core/types/vendor/q-table';
 
 const fileSettings = reactive<SettingsFile>({
   apiUrl: '',

@@ -1,9 +1,9 @@
 // TODO: Delete this store, use the actions in ZReport component.
 import { defineStore } from 'pinia';
-import { OrderInfo, ZReport } from '@fjord/core/src/models/z-report';
+import { OrderInfo, ZReport } from '@fjord/core/models/z-report';
 import moment from 'moment';
 import http from '@/services';
-import ZReportService from '@fjord/core/src/services/z-report';
+import ZReportService from '@fjord/core/services/z-report';
 
 interface State {
   zReport?: ZReport;

@@ -1,5 +1,5 @@
 import { PrinterInfo } from 'electron';
-import { SettingsFile } from '@fjord/core/src/models/settings';
+import { SettingsFile } from '@fjord/core/models/settings';
 
 interface WindowAPI {
   printHtml: (html: string) => Promise<void>;

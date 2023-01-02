@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { OrderTypeFilter, Order } from '@fjord/core/src/models/order';
+import { OrderTypeFilter, Order } from '@fjord/core/models/order';
 import { reactive, watch } from 'vue';
 import { useOrderStore } from '@/stores/order'
-import { TableColumn } from '@fjord/core/src/types/vendor/q-table';
-import { DateUtils, OrdersUtils } from '@fjord/core/src/utils';
+import { TableColumn } from '@fjord/core/types/vendor/q-table';
+import { DateUtils, OrdersUtils } from '@fjord/core/utils';
 import { useRouter } from 'vue-router';
 import AppFilterOrderType from './components/AppFilterOrderType.vue';
 import { usePreferenceStore } from '@/stores/preference';

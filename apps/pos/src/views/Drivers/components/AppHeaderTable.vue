@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { Order, OrderStatus } from '@fjord/core/src/models/order';
-import { PaymentMethod } from '@fjord/core/src/models/payment';
+import { Order, OrderStatus } from '@fjord/core/models/order';
+import { PaymentMethod } from '@fjord/core/models/payment';
 import { usePreferenceStore } from '@/stores/preference';
-import { TableColumn } from '@fjord/core/src/types/vendor/q-table';
+import { TableColumn } from '@fjord/core/types/vendor/q-table';
 
 const { moneySymbol } = usePreferenceStore();
 

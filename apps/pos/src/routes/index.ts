@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Home from '@fjord/core/src/components/Home.vue';
+import Home from '@fjord/core/components/Home.vue';
 import TodayOrderVue from '@/views/TodayOrder/TodayOrder.vue';
 import DriversVue from '@/views/Drivers/Drivers.vue';
 import AppOrder from '@/print/Order/AppOrder.vue';

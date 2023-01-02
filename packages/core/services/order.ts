@@ -1,9 +1,9 @@
-import { URLSearchParams } from "url";
+import { URLSearchParams } from 'url';
 
-import { Order } from "@fjord/core/src/models/order";
-import { AxiosInstance } from "axios";
+import { Order } from '@fjord/core/models/order';
+import { AxiosInstance } from 'axios';
 
-const ENDPOINT = "/orders";
+const ENDPOINT = '/orders';
 
 export default (http: AxiosInstance) => ({
   get: (uuid: string): Promise<Order> => {

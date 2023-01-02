@@ -1,13 +1,13 @@
 
 <script lang="ts" setup>
-import { Addon, AddonGroup } from '@fjord/core/src/models/addon';
-import { Item } from '@fjord/core/src/models/item';
-import { OrderItem, OrderType } from '@fjord/core/src/models/order';
+import { Addon, AddonGroup } from '@fjord/core/models/addon';
+import { Item } from '@fjord/core/models/item';
+import { OrderItem, OrderType } from '@fjord/core/models/order';
 import moment from 'moment';
 import { computed } from 'vue';
 
-import fastDelivery from '@fjord/core/src/assets/fast-delivery.png';
-import takeAway from '@fjord/core/src/assets/takeaway.png';
+import fastDelivery from '@fjord/core/assets/fast-delivery.png';
+import takeAway from '@fjord/core/assets/takeaway.png';
 import { useOrderStore } from '@/stores/order';
 import { storeToRefs } from 'pinia';
 import { usePreferenceStore } from '@/stores/preference';

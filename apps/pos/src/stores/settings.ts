@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { Settings, Printer } from '@fjord/core/src/models/settings';
+import { Settings, Printer } from '@fjord/core/models/settings';
 
 interface State {
   settings: Settings;

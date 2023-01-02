@@ -96,7 +96,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: '@import "@fjord/core/src/scss/styles";',
+        additionalData: '@import "@fjord/core/scss/styles";',
       },
     },
   },

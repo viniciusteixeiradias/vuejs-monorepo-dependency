@@ -4,8 +4,8 @@ import ZReport from '@/print/ZReport/zReport.vue';
 import { usePreferenceStore } from '@/stores/preference';
 import { useZReportStore } from '@/stores/z-report';
 // TODO: Ignore src
-import { Order } from '@fjord/core/src/models/order';
-import { TableColumn } from '@fjord/core/src/types/vendor/q-table';
+import { Order } from '@fjord/core/models/order';
+import { TableColumn } from '@fjord/core/types/vendor/q-table';
 import moment from 'moment';
 import { storeToRefs } from 'pinia';
 import { createApp, reactive, watch } from 'vue';

@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import { Cart, CartPayment } from '@fjord/core/src/models/cart';
-import { Item } from '@fjord/core/src/models/item';
-import { Order, OrderType, OrderItem } from '@fjord/core/src/models/order';
-import { Payment } from '@fjord/core/src/models/payment';
-import { Takeaway } from '@fjord/core/src/models/takeaway';
+import { Cart, CartPayment } from '@fjord/core/models/cart';
+import { Item } from '@fjord/core/models/item';
+import { Order, OrderType, OrderItem } from '@fjord/core/models/order';
+import { Payment } from '@fjord/core/models/payment';
+import { Takeaway } from '@fjord/core/models/takeaway';
 import { v4 } from 'uuid';
 
 interface State {

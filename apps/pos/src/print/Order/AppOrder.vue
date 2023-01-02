@@ -14,7 +14,7 @@ import { useOrderStore } from '@/stores/order';
 import { useSettingsStore } from '@/stores/settings';
 import { storeToRefs } from 'pinia';
 import { useTableStore } from '@/stores/table';
-import { Printer } from '@fjord/core/src/models/settings';
+import { Printer } from '@fjord/core/models/settings';
 import PrintOrder from './PrintOrder.vue'
 import OpenTill from '../OpenTill.vue'
 
