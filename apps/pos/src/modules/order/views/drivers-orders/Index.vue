@@ -6,10 +6,11 @@ import { useRouter } from 'vue-router';
 
 import AppHeaderTable from './components/AppHeaderTable.vue';
 import { usePreferenceStore } from '@/stores/preference';
-import { useOrderStore } from '@/stores/order';
+import { useOrderStore } from '@/modules/order/store/index';
 import { useCartStore } from '@/stores/cart';
 import { TableColumn } from '@fjord/core/types/vendor/q-table';
 import { DateUtils, OrdersUtils } from '@fjord/core/utils';
+import PrintDialog from '../../components/PrintDialog.vue';
 
 interface State {
   loading: boolean;
@@ -18,6 +19,7 @@ interface State {
     page: number;
     limit: number;
   };
+  shouldShowConfirmDialogPrinter: boolean;
 }
 
 const state: State = reactive({
@@ -26,7 +28,8 @@ const state: State = reactive({
   pagination: {
     page: 1,
     limit: 20
-  }
+  },
+  shouldShowConfirmDialogPrinter: false
 });
 
 const router = useRouter();
@@ -96,7 +99,7 @@ const showOrder = async (order: Order) => {
 
 const printOrder = async (order: Order) => {
   await getAndSetOrderInStore(order);
-  router.push({ name: 'print-order' });
+  state.shouldShowConfirmDialogPrinter = true;
 };
 
 const getAndSetOrderInStore = async (order: Order, viewOrder: boolean = false) => {
@@ -251,6 +254,7 @@ loadDeliveryOrders();
       />
     </div>
   </q-card>
+  <PrintDialog v-if="state.shouldShowConfirmDialogPrinter" />
 </template>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
-import { Preference } from '@fjord/core/src/models/preference';
-import PreferenceService from '@fjord/core/src/services/preference';
+import { Preference } from '@fjord/core/models/preference';
+import PreferenceService from '@fjord/core/services/preference';
 import http from '@/services';
 import { reactive, computed, ComputedRef } from 'vue';
 

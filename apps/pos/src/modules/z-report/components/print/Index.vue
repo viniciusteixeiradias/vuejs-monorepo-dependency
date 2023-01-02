@@ -2,9 +2,9 @@
 <script lang="ts" setup>
 import moment from 'moment';
 import { storeToRefs } from 'pinia';
-import { useZReportStore } from '@/stores/z-report';
+import { useZReportStore } from '@/modules/z-report/store/index';
 import { usePreferenceStore } from '@/stores/preference';
-import style from "./z-report.css?inline"
+import style from "./index.css?inline"
 
 const { zReport } = storeToRefs(useZReportStore()); // TODO: Validar se precisa do store do zreport
 const { moneySymbol, preferences } = usePreferenceStore();

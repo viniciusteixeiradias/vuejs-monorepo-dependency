@@ -1,4 +1,3 @@
-
 <script lang="ts" setup>
 import { printHtml } from '@/hooks/usePrint';
 import {
@@ -9,14 +8,13 @@ import {
   watch
 } from 'vue';
 import { useRouter } from 'vue-router';
-
-import { useOrderStore } from '@/stores/order';
-import { useSettingsStore } from '@/stores/settings';
+import { useOrderStore } from '../store/index';
+import { useSettingsStore } from '@/modules/settings/store/index';
 import { storeToRefs } from 'pinia';
 import { useTableStore } from '@/stores/table';
 import { Printer } from '@fjord/core/models/settings';
-import PrintOrder from './PrintOrder.vue'
-import OpenTill from '../OpenTill.vue'
+import PrintOrder from './print/Index.vue'
+import OpenTill from '@/print/OpenTill.vue'
 
 interface State {
   showPrinterList: boolean;
@@ -34,7 +32,7 @@ const { settings } = storeToRefs(useSettingsStore());
 const { setPrinters }= useSettingsStore();
 const { printableItems } = storeToRefs(useTableStore());
 
-const options = computed(() => printers.value.map((x) => {
+const options = computed(() => printers.value.map((x: any) => {
   return {
     label: x.label,
     value: x.label

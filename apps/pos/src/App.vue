@@ -16,7 +16,7 @@ load();
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #333333;
-  padding-top: 60px;
+  padding-block: 15px;
   height: 100vh;
 }
 </style>

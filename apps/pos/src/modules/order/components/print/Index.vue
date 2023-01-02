@@ -8,12 +8,12 @@ import { computed } from 'vue';
 
 import fastDelivery from '@fjord/core/assets/fast-delivery.png';
 import takeAway from '@fjord/core/assets/takeaway.png';
-import { useOrderStore } from '@/stores/order';
+import { useOrderStore } from '../../store/index';
 import { storeToRefs } from 'pinia';
 import { usePreferenceStore } from '@/stores/preference';
 import { useTableStore } from '@/stores/table';
 
-import style from "./print-order.css?inline"
+import style from "./index.css?inline"
 
 const props = defineProps<{
   partialPrint?: boolean;

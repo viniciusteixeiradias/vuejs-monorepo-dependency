@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { printHtml } from '@/hooks/usePrint';
-import ZReport from '@/print/ZReport/zReport.vue';
+import ZReport from '@/modules/z-report/components/print/Index.vue';
 import { usePreferenceStore } from '@/stores/preference';
-import { useZReportStore } from '@/stores/z-report';
+import { useZReportStore } from '../store/index';
 // TODO: Ignore src
 import { Order } from '@fjord/core/models/order';
 import { TableColumn } from '@fjord/core/types/vendor/q-table';
@@ -16,7 +16,7 @@ const { zReport } = storeToRefs(useZReportStore());
 const { getDates, loadZReport, filteredReport } = useZReportStore()
 const { moneySymbol, useTables, useTakeaway } = usePreferenceStore();
 
-const { start: startAt, end: endAt } = getDates(moment().format('YYYY-MM-DD'), moment().format('YYYY-MM-DD'));
+const { startAt, endAt } = getDates(moment().format('YYYY-MM-DD'), moment().format('YYYY-MM-DD'));
 
 interface State {
   startAt: string,

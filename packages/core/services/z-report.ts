@@ -1,4 +1,4 @@
-import { ZReport } from '@/models/z-report';
+import { ZReport } from '../models/z-report';
 import { AxiosInstance } from 'axios';
 
 const ENDPOINT = 'reports/';

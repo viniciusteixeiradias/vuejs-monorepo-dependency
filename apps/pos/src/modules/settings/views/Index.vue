@@ -5,16 +5,15 @@ import {
   ref,
   onBeforeMount
 } from 'vue';
-import { Printer, Settings } from '@fjord/core/models/settings';
+import { Printer, Settings, SettingsFile} from '@fjord/core/models/settings';
 import { Preference } from '@fjord/core/models/preference';
 import { PrinterInfo } from 'electron';
 
 // import { ElMessage } from 'element-plus';
 import { useRouter } from 'vue-router';
-import { useSettingsStore } from '@/stores/settings';
+import { useSettingsStore } from '../store/index';
 import { storeToRefs } from 'pinia';
 import { usePreferenceStore } from '@/stores/preference';
-import { SettingsFile } from '@fjord/core/models/settings';
 import InputNumber from '@/components/InputNumber.vue';
 import { TableColumn } from '@fjord/core/types/vendor/q-table';
 
@@ -23,8 +22,7 @@ const fileSettings = reactive<SettingsFile>({
   loginByCode: false
 });
 
-const { saveSettings, addNewPrinter, removePrinter } = useSettingsStore();
-const { settings } = storeToRefs(useSettingsStore());
+const store = useSettingsStore();
 const { preferences } = storeToRefs(usePreferenceStore());
 const { save: savePreferences } = usePreferenceStore();
 
@@ -39,11 +37,11 @@ interface State {
 
 const state: State = reactive({
   settings: {
-    askBeforePrint: settings.value.askBeforePrint || false,
-    printers: JSON.parse(JSON.stringify(settings.value.printers || [])),
-    onHoldPrintTimes: settings.value.onHoldPrintTimes || 1,
-    checkoutPrintTimes: settings.value.checkoutPrintTimes || 1,
-    useVirtualKeyboard: settings.value.useVirtualKeyboard || false
+    askBeforePrint: store.settings.askBeforePrint || false,
+    printers: JSON.parse(JSON.stringify(store.settings.printers || [])),
+    onHoldPrintTimes: store.settings.onHoldPrintTimes || 1,
+    checkoutPrintTimes: store.settings.checkoutPrintTimes || 1,
+    useVirtualKeyboard: store.settings.useVirtualKeyboard || false
   },
   dialogPrinters: false,
   windowsPrinters: [],
@@ -58,7 +56,7 @@ const state: State = reactive({
 const router = useRouter();
 const Form = ref();
 
-const printers = computed((): Printer[] => settings.value.printers || []);
+const printers = computed((): Printer[] => store.settings.printers || []);
 const rules = {
   onHoldPrintTimes: [
     {
@@ -84,7 +82,7 @@ const loadPrinters = async () => {
 };
 
 const save = () => {
-  saveSettings(state.settings);
+  store.saveSettings(state.settings);
   const newPreferences: Preference = JSON.parse(
     JSON.stringify(preferences?.value)
   );
@@ -143,7 +141,7 @@ const addPrinter = () => {
     */
     const { name } = state.printer.device
     console.log(state.printer.label, name)
-    addNewPrinter({
+    store.addNewPrinter({
       label: state.printer.label,
       device: name
     });
@@ -153,11 +151,11 @@ const addPrinter = () => {
 };
 
 const deletePrinter = (printer: Printer) => {
-  removePrinter(printer);
+  store.removePrinter(printer);
 };
 
 const savePrinters = () => {
-  saveSettings(state.settings);
+  store.saveSettings(state.settings);
   state.dialogPrinters = false;
 };
 
