@@ -8,17 +8,7 @@ import { vSoundClick } from '@/directives';
 
 import quasarUserOptions from '@fjord/core/quasar-user-options';
 
-import settingsModule from './modules/settings';
-import zReportModule from './modules/z-report';
-import orderModule from './modules/order';
-
-import { registerModules } from './register-modules';
-
-registerModules({
-  settings: settingsModule,
-  zReport: zReportModule,
-  order: orderModule,
-});
+import '@/modules/index';
 
 const app = createApp(App);
 const pinia = createPinia();

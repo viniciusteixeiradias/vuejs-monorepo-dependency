@@ -1,4 +1,4 @@
-import router from './routes';
+import router from '../routes';
 
 const registerModule = (module: any) => {
   if (module.router) {
