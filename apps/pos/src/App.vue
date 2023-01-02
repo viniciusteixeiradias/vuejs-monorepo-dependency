@@ -6,6 +6,7 @@ load();
 </script>
 
 <template>
+  <span>POS</span>
   <router-view />
 </template>
 

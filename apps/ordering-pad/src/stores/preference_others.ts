@@ -67,66 +67,66 @@ interface State {
 //   return { state, getters, load };
 // });
 
-export const usePreferenceStore = defineStore('preference', {
-  state(): State {
-    return {};
-  },
-
-  actions: {
-    async load(): Promise<void> {
-      const service = PreferenceService(http);
-      this.preferences = await service.get();
-    },
-
-    async save(preferences?: Preference): Promise<void> {
-      if (!preferences) {
-        return;
-      }
-
-      const service = PreferenceService(http);
-      this.preferences = await service.create(preferences);
-    },
-  },
-
-  getters: {
-    useTables(state): ComputedRef<boolean | undefined> {
-      return computed(() => state.preferences?.general?.useTables);
-    },
-    useTakeaway(state): ComputedRef<boolean | undefined> {
-      return computed(() => state.preferences?.general?.useTakeaway);
-    },
-  },
-});
-
-// const state: State = {};
-
-// const actions = {
-//   async load(): Promise<void> {
-//     const service = PreferenceService(http);
-//     state.preferences = await service.get();
-//   },
-
-//   async save(preferences?: Preference): Promise<void> {
-//     if (!preferences) {
-//       return;
-//     }
-
-//     const service = PreferenceService(http);
-//     state.preferences = await service.create(preferences);
-//   },
-// };
-
-// const getters = {
-//   useTables(state: State): ComputedRef<boolean | undefined> {
-//     return computed(() => state.preferences?.general?.useTables);
-//   },
-//   useTakeaway(state: State): ComputedRef<boolean | undefined> {
-//     return computed(() => state.preferences?.general?.useTakeaway);
-//   },
-// };
-
 // export const usePreferenceStore = defineStore("preference", {
-//   state: () => state,
-//   actions,
-//   getters,
+//   state(): State {
+//     return {};
+//   },
+
+//   actions: {
+//     async load(): Promise<void> {
+//       const service = PreferenceService(http);
+//       this.preferences = await service.get();
+//     },
+
+//     async save(preferences?: Preference): Promise<void> {
+//       if (!preferences) {
+//         return;
+//       }
+
+//       const service = PreferenceService(http);
+//       this.preferences = await service.create(preferences);
+//     },
+//   },
+
+//   getters: {
+//     useTables(state): ComputedRef<boolean | undefined> {
+//       return computed(() => state.preferences?.general?.useTables);
+//     },
+//     useTakeaway(state): ComputedRef<boolean | undefined> {
+//       return computed(() => state.preferences?.general?.useTakeaway);
+//     },
+//   },
 // });
+
+const state: State = {};
+
+const actions = {
+  async load(): Promise<void> {
+    const service = PreferenceService(http);
+    state.preferences = await service.get();
+  },
+
+  async save(preferences?: Preference): Promise<void> {
+    if (!preferences) {
+      return;
+    }
+
+    const service = PreferenceService(http);
+    state.preferences = await service.create(preferences);
+  },
+};
+
+const getters = {
+  useTables(state: State): ComputedRef<boolean | undefined> {
+    return computed(() => state.preferences?.general?.useTables);
+  },
+  useTakeaway(state: State): ComputedRef<boolean | undefined> {
+    return computed(() => state.preferences?.general?.useTakeaway);
+  },
+};
+
+export const usePreferenceStore = defineStore('preference', {
+  state: () => state,
+  actions,
+  getters,
+});

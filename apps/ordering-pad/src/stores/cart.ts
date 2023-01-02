@@ -4,7 +4,7 @@ import { Item } from '@fjord/core/models/item';
 import { Order, OrderType, OrderItem } from '@fjord/core/models/order';
 import { Payment } from '@fjord/core/models/payment';
 import { Takeaway } from '@fjord/core/models/takeaway';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 } from 'uuid';
 
 interface State {
   cart: Cart;
@@ -63,7 +63,7 @@ const itemsFactory = (orderItem?: OrderItem[]): Item[] => {
   return orderItem.map((item: OrderItem): Item => {
     return {
       ...item,
-      uuid: uuidv4(),
+      uuid: v4(),
       name: item.name || item.product?.name,
       comment: item.comment || '',
       quantity: item.quantity || 0,

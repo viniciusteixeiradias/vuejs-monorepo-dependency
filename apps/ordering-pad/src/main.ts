@@ -8,6 +8,8 @@ import { vSoundClick } from '@/directives';
 
 import quasarUserOptions from '@fjord/core/quasar-user-options';
 
+import '@/modules/index';
+
 const app = createApp(App);
 const pinia = createPinia();
 

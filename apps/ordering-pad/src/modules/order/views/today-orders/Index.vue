@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { OrderTypeFilter, Order } from '@fjord/core/models/order';
 import { reactive, watch } from 'vue';
-import { useOrderStore } from '@/stores/order'
+import { useOrderStore } from '../../store/index';
 import { TableColumn } from '@fjord/core/types/vendor/q-table';
 import { DateUtils, OrdersUtils } from '@fjord/core/utils';
 import { useRouter } from 'vue-router';
@@ -69,6 +69,7 @@ const columns: TableColumn[] = [
     field: 'address',
     align: 'center',
     sortable: true,
+    style: 'text-align: start;'
   },
   {
     name: 'method',
@@ -257,8 +258,7 @@ watch(() => state.orderTypeFilter, () => {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: #343434 !important;
-  color: white;
+  margin-inline: 1rem;
 
   &__main-section {
     flex: 1;

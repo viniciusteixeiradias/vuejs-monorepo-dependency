@@ -1,10 +1,11 @@
 import { rmSync } from 'fs';
-import { fileURLToPath, URL } from 'node:url';
 import { type Plugin, defineConfig, loadEnv } from 'vite';
+import { fileURLToPath, URL } from 'node:url';
 import vue from '@vitejs/plugin-vue';
 import electron from 'vite-plugin-electron';
 import renderer from 'vite-plugin-electron-renderer';
 import pkg from './package.json';
+import { Quasar } from 'quasar';
 
 rmSync('dist-electron', { recursive: true, force: true });
 const sourcemap = !!process.env.VSCODE_DEBUG;
@@ -109,4 +110,12 @@ export default defineConfig({
       })()
     : undefined,
   clearScreen: false,
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+    __QUASAR_VERSION__: JSON.stringify(Quasar.version),
+    __QUASAR_SSR__: false,
+    __QUASAR_SSR_SERVER__: false,
+    __QUASAR_SSR_CLIENT__: false,
+    __QUASAR_SSR_PWA__: false,
+  },
 });

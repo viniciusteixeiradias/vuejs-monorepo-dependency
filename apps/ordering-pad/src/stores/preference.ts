@@ -10,7 +10,9 @@ interface State {
 
 export const usePreferenceStore = defineStore('preference', {
   state(): State {
-    return {};
+    return {
+      preferences: undefined,
+    };
   },
 
   actions: {
