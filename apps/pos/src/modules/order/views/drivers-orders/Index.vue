@@ -5,9 +5,9 @@ import { Order } from '@fjord/core/models/order';
 import { useRouter } from 'vue-router';
 
 import AppHeaderTable from './components/AppHeaderTable.vue';
-import { usePreferenceStore } from '@/stores/preference';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
 import { useOrderStore } from '@/modules/order/store/index';
-import { useCartStore } from '@/stores/cart';
+import { useCartStore } from '@/modules/cart/store';
 import { TableColumn } from '@fjord/core/types/vendor/q-table';
 import { DateUtils, OrdersUtils } from '@fjord/core/utils';
 import PrintDialog from '../../components/PrintDialog.vue';

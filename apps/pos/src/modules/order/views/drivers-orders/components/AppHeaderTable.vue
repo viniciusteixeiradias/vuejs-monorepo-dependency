@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import { Order, OrderStatus } from '@fjord/core/models/order';
 import { PaymentMethod } from '@fjord/core/models/payment';
-import { usePreferenceStore } from '@/stores/preference';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
 import { TableColumn } from '@fjord/core/types/vendor/q-table';
 
 const { moneySymbol } = usePreferenceStore();

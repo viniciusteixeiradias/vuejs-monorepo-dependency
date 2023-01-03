@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { printHtml } from '@/hooks/usePrint';
+import { usePrintHtml } from '@/hooks/usePrint';
 import ZReport from '@/modules/z-report/components/print/Index.vue';
-import { usePreferenceStore } from '@/stores/preference';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
 import { useZReportStore } from '../store/index';
 // TODO: Ignore src
 import { Order } from '@fjord/core/models/order';
@@ -79,7 +79,7 @@ const print = () => {
     createApp(ZReport).mount(div);
 
     const html = div.outerHTML;
-    printHtml(html);
+    usePrintHtml(html);
   } catch (error) {
     console.error(error)
   } finally {

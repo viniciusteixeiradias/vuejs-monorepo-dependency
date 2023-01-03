@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { printHtml } from '@/hooks/usePrint';
+import { usePrintHtml } from '@/hooks/usePrint';
 import {
   onMounted,
   computed,
@@ -65,7 +65,7 @@ const openTill = () => {
   createApp(OpenTill).mount(div);
 
   const html = div.outerHTML;
-  printHtml(html); // options, p
+  usePrintHtml(html); // options, p
 };
 
 const callPrint = async () => {
@@ -170,7 +170,7 @@ const printPage = async () => {
     partialPrint: false
   }).mount(div);
   const html = div.outerHTML;
-  printHtml(html); // TODO: copies: printTimes, printerList
+  usePrintHtml(html); // TODO: copies: printTimes, printerList
 };
 
 const hasPrinter = computed(() => printers.value && printers.value.length > 1)

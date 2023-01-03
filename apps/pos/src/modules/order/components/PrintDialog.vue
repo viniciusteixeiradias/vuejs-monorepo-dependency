@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { printHtml } from '@/hooks/usePrint';
+import { usePrintHtml } from '@/hooks/usePrint';
 import {
   onMounted,
   computed,
@@ -11,7 +11,7 @@ import { useRouter } from 'vue-router';
 import { useOrderStore } from '../store/index';
 import { useSettingsStore } from '@/modules/settings/store/index';
 import { storeToRefs } from 'pinia';
-import { useTableStore } from '@/stores/table';
+import { useTableStore } from '@/modules/table/store';
 import { Printer } from '@fjord/core/models/settings';
 import PrintOrder from './print/Index.vue'
 import OpenTill from '@/components/OpenTill.vue'
@@ -65,7 +65,7 @@ const openTill = () => {
   createApp(OpenTill).mount(div);
 
   const html = div.outerHTML;
-  printHtml(html); // options, p
+  usePrintHtml(html); // options, p
 };
 
 const callPrint = async () => {
@@ -170,7 +170,7 @@ const printPage = async () => {
     partialPrint: false
   }).mount(div);
   const html = div.outerHTML;
-  printHtml(html); // TODO: copies: printTimes, printerList
+  usePrintHtml(html); // TODO: copies: printTimes, printerList
 };
 
 const hasPrinter = computed(() => printers.value && printers.value.length > 1)

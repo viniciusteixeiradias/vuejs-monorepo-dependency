@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { usePreferenceStore } from '@/stores/preference';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
 
 const { load } = usePreferenceStore();
 load();

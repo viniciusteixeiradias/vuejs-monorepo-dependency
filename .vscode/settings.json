@@ -2,6 +2,6 @@
   "material-icon-theme.folders.associations": {
     "pos":  "vue",
     "ordering-pad":  "vue",
-    "stores": "vuex-store"
+    "store": "vuex-store"
   }
 }

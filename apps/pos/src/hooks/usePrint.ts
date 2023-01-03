@@ -1,6 +1,6 @@
-const printHtml = (html: string) => {
+const usePrintHtml = (html: string) => {
   // @ts-ignore (define in dts)
   return window.api.printHtml(html);
 };
 
-export { printHtml };
+export { usePrintHtml };
