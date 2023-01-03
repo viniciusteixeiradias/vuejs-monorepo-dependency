@@ -6,8 +6,8 @@ import { TableColumn } from '@fjord/core/types/vendor/q-table';
 import { DateUtils, OrdersUtils } from '@fjord/core/utils';
 import { useRouter } from 'vue-router';
 import AppFilterOrderType from './components/AppFilterOrderType.vue';
-import { usePreferenceStore } from '@/stores/preference';
-import { useCartStore } from '@/stores/cart';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
+import { useCartStore } from '@/modules/cart/store';
 
 interface State {
   loading: boolean;

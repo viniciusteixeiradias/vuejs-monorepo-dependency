@@ -11,7 +11,7 @@ import { useRouter } from 'vue-router';
 import { useOrderStore } from '../store/index';
 import { useSettingsStore } from '@/modules/settings/store/index';
 import { storeToRefs } from 'pinia';
-import { useTableStore } from '@/stores/table';
+import { useTableStore } from '@/modules/table/store';
 import { Printer } from '@fjord/core/models/settings';
 import PrintOrder from './print/Index.vue'
 import OpenTill from '@/components/OpenTill.vue'

@@ -13,7 +13,7 @@ import { PrinterInfo } from 'electron';
 import { useRouter } from 'vue-router';
 import { useSettingsStore } from '../store/index';
 import { storeToRefs } from 'pinia';
-import { usePreferenceStore } from '@/stores/preference';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
 import InputNumber from '@/components/InputNumber.vue';
 import { TableColumn } from '@fjord/core/types/vendor/q-table';
 

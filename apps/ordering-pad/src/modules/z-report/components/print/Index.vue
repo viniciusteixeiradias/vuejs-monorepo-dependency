@@ -3,7 +3,7 @@
 import moment from 'moment';
 import { storeToRefs } from 'pinia';
 import { useZReportStore } from '@/modules/z-report/store/index';
-import { usePreferenceStore } from '@/stores/preference';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
 import style from "./index.css?inline"
 
 const { zReport } = storeToRefs(useZReportStore()); // TODO: Validar se precisa do store do zreport

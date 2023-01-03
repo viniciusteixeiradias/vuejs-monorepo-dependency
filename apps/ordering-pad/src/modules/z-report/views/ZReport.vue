@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { usePrintHtml } from '@/hooks/usePrint';
 import ZReport from '@/modules/z-report/components/print/Index.vue';
-import { usePreferenceStore } from '@/stores/preference';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
 import { useZReportStore } from '../store/index';
 // TODO: Ignore src
 import { Order } from '@fjord/core/models/order';

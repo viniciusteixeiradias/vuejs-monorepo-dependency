@@ -10,8 +10,8 @@ import fastDelivery from '@fjord/core/assets/fast-delivery.png';
 import takeAway from '@fjord/core/assets/takeaway.png';
 import { useOrderStore } from '../../store/index';
 import { storeToRefs } from 'pinia';
-import { usePreferenceStore } from '@/stores/preference';
-import { useTableStore } from '@/stores/table';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
+import { useTableStore } from '@/modules/table/store';
 
 import style from "./index.css?inline"
 

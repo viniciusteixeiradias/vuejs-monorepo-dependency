@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { usePreferenceStore } from '@/stores/preference';
+import { usePreferenceStore } from '@/modules/preference/store/preference';
 
 const { load } = usePreferenceStore();
 load();
 </script>
 
 <template>
-  <span>Ordering Pad</span>
+  <span>POS</span>
   <router-view />
 </template>
 
@@ -16,6 +16,7 @@ load();
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: #333333;
   padding-block: 15px;
   height: 100vh;
 }
