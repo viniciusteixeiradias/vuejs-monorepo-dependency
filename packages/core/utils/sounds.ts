@@ -1,5 +1,5 @@
-import clickSound from "../assets/sounds/click.mp3";
-import orderSound from "../assets/sounds/newOrder.mp3";
+import clickSound from '../assets/sounds/click.mp3';
+import orderSound from '../assets/sounds/newOrder.mp3';
 
 const click = (): void => {
   const audio = new Audio(clickSound);

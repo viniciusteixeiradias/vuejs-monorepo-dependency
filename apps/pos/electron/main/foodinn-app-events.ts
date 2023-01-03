@@ -2,7 +2,7 @@ import fs from 'fs';
 
 import { BrowserWindow, ipcMain, App } from 'electron';
 
-import { PrintUtils } from '@fjord/core/utils/index';
+import { printHtml } from '@fjord/core/print';
 
 export default (app: App, window: BrowserWindow) => {
   ipcMain.on('closeApp', () => app.quit());
@@ -32,5 +32,5 @@ export default (app: App, window: BrowserWindow) => {
     }
   });
 
-  ipcMain.handle('printHtml', PrintUtils.printHtml);
+  ipcMain.handle('printHtml', printHtml);
 };
