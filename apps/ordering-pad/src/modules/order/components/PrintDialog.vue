@@ -14,7 +14,7 @@ import { storeToRefs } from 'pinia';
 import { useTableStore } from '@/modules/table/store';
 import { Printer } from '@fjord/core/models/settings';
 import PrintOrder from './print/Index.vue'
-import OpenTill from '@/components/OpenTill.vue'
+import OpenTill from '@fjord/core/ccomponents/OnpenTill.vue'
 
 interface State {
   showPrinterList: boolean;

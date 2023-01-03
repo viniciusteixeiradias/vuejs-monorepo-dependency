@@ -4,7 +4,7 @@ import { Quasar } from 'quasar';
 import App from './App.vue';
 import router from '@/routes';
 
-import { vSoundClick } from '@/directives';
+import { vSoundClick } from '@/directives/vSoundClick';
 
 import quasarUserOptions from '@fjord/core/quasar-user-options';
 

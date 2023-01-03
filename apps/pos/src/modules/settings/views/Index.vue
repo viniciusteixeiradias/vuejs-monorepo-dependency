@@ -14,7 +14,7 @@ import { useRouter } from 'vue-router';
 import { useSettingsStore } from '../store/index';
 import { storeToRefs } from 'pinia';
 import { usePreferenceStore } from '@/modules/preference/store/preference';
-import InputNumber from '@/components/InputNumber.vue';
+import InputNumber from '@fjord/core/components/InputNumber.vue';
 import { TableColumn } from '@fjord/core/types/vendor/q-table';
 
 const fileSettings = reactive<SettingsFile>({

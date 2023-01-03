@@ -13,8 +13,8 @@ import { useSettingsStore } from '@/modules/settings/store/index';
 import { storeToRefs } from 'pinia';
 import { useTableStore } from '@/modules/table/store';
 import { Printer } from '@fjord/core/models/settings';
-import PrintOrder from './print/Index.vue'
-import OpenTill from '@/components/OpenTill.vue'
+import PrintOrder from './print/Index.vue';
+import OpenTill from '@fjord/core/components/OpenTill.vue';
 
 interface State {
   showPrinterList: boolean;
